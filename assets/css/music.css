@@ -24,6 +24,7 @@ section, summary, time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;}
+	
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -226,7 +227,7 @@ input, select, textarea {
 		transform: translate3d(0,0,0);
 	/* Set your background with this */
 
-		background: #348cb2 url("images/bg.jpg") bottom left;
+		background: black url("images/bg2.jpg") bottom left;
 		background-repeat: repeat-x;
 		height: 100%;
 		left: 0;
@@ -1088,7 +1089,6 @@ input, select, textarea {
 		}
 
 		.musicIcon:hover{
-			color: black;
 			transform: scale(1.3);
 			transition: ease-in-out 0.5s;
 		}
