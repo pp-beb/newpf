@@ -946,7 +946,28 @@ align-items: center;
 	color: #fff ;
 	text-align: center;
 }
+.note-section input{
+	color: black;
+	border: none;
+	background-color: transparent;
+}
 
+.note-section textarea{
+	color: black;
+	background-color: transparent;
+	height: 50px;
+	width:250px ;
+	resize: none;
+
+}
+.status{
+	color: #fff;
+}
+.contactBtn{
+	background: linear-gradient(transparent, #348cb2);
+	border-color: white;
+	color: white;
+}
 /* Music Icon */
 .musicIcon {
 	position: fixed;

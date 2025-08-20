@@ -111,6 +111,20 @@
 					<h2>Contact me </h2>
 					<h3>+977 9869836924</h3>
 					<h3>prithakkoirala44@gmail.com</h3>
+					<br/><br/>
+					<div class="note-section">
+  <h3>Send me a note :</h3>
+
+  Name:  <input type="text" id="name" placeholder="Your Name" required /><br/>
+  E-mail:  <input type="email" id="email" placeholder="Your Email" required /><br/>
+  Phone:  <input type="tel" id="number" placeholder="Your Phone Number" required /><br/><br/>
+  Message:<br/>
+  <textarea id="noteArea" placeholder="Your Message..." required></textarea><br/><br/>
+
+  <button onclick="sendNote()" class="contactBtn">Send</button>
+  <div class="status" id="statusMsg"></div>
+</div>
+
 				</div>
 
 				<footer id="footer">
@@ -121,5 +135,59 @@
 		<script src="assets/js/script.js">
 		
 		</script>
+		<script>
+  function sendNote() {
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const number = document.getElementById("number").value.trim();
+  const message = document.getElementById("noteArea").value.trim();
+  const status = document.getElementById("statusMsg");
+
+  if (!name || !email || !number || !message) {
+    status.innerText = "Please fill in all fields!";
+    status.style.color = "white";
+    return;
+  }
+
+  // Replace with your Discord webhook URL
+  const webhookURL = "https://discord.com/api/webhooks/1407644765394305105/2GXA7mReMdsShXXOXwZuOdeArEJfgDujhejpBTIoI_j7FSknfvmdbEzoTLvSUrv8V9la";
+
+  const data = {
+    username: "Portfolio Bot 💼",
+    content:
+`📩 **New message from your portfolio**
+**Name:** ${name}
+**Email:** ${email}
+**Phone:** ${number}
+**Message:** 
+${message}`
+  };
+
+  fetch(webhookURL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(res => {
+    if (res.status === 204) {   
+      status.innerText = "Message sent!";
+      status.style.color = "white";
+
+      // Clear form
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("number").value = "";
+      document.getElementById("noteArea").value = "";
+    } else {
+      throw new Error(`Failed with status ${res.status}`);
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    status.innerText = "Oops! Something went wrong.";
+    status.style.color = "white";
+  });
+}
+</script>
 	</body>
 </html>
